@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposto de Renda</title>
+</head>
+
+<body>
+
+    <h1>Imposto de Renda</h1>
+    <hr>
+    <h3><div id="Imposto"></div></h3>
+    <script>
+
+
+        let pergunta = Number(prompt('Você deseja Cadastrar um Comtribuinte\nPara Sim, digite [1]\nPara Não, digite [2]'))
+
+        while(pergunta ==1)
+        {
+        let nome = prompt('Digite o nome do contribuinte: ');
+        let cpf = prompt('Digite o número do CPF do contribuinte: ');
+        let RendaAnual = parseFloat(prompt('Digite a renda Anual do contribuinte'));
+        let Dependentes = parseFloat(prompt('Digite a quantidade de Dependentes que o contribuinte possui, caso não tenha dependente, digite 0 '));
+        
+        pergunta = Number(prompt('Você deseja Cadastrar outro Comtribuinte\nPara Sim, digite [1]\nPara Não, digite [2]'))
+
+        let DescDependentes = Dependentes * 110.00;
+        let Retorno;
+        let calculoImp;
+
+        switch (true) {
+            case RendaAnual <= 900:
+                Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes +'<br>Renda Anual: R$' + RendaAnual +'<br> O Valor declarado por este contribuinte esta Isento de Impostos'
+            break
+
+            case RendaAnual >= 901 && RendaAnual <= 5000:
+                calculoImp = (RendaAnual * 0.05) - DescDependentes;
+                if (calculoImp % 1 !== 0) 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser Restituído: R$' + calculoImp;
+                } 
+                else if (calculoImp >= 0) 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser cobrado: R$' + calculoImp;
+                } 
+                 else 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser restituído: R$' + Math.abs(calculoImp);
+                }
+            break;
+
+            case RendaAnual >= 5001 && RendaAnual <= 10000:
+                calculoImp = (RendaAnual * 0.10) - DescDependentes;
+                if (calculoImp % 1 !== 0)
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser Restituído: R$' + calculoImp;
+                } 
+                else if (calculoImp >= 0) 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser cobrado: R$' + calculoImp;
+                } 
+                else 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser restituído: R$' + Math.abs(calculoImp);
+                }
+             break;
+
+            case RendaAnual > 10000:
+                calculoImp = (RendaAnual * 0.15) - DescDependentes;
+                if (calculoImp % 1 !== 0)
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser Restituído: R$' + calculoImp;
+                } 
+                else if (calculoImp >= 0) 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual: R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser cobrado: R$' + calculoImp;
+                } 
+                else 
+                {
+                    Retorno = 'Nome do contribuinte: ' + nome + '<br>CPF: ' + cpf + '<br>Quantidade de Dependentes: ' + Dependentes + '<br>Renda Anual:R$' + RendaAnual + '<br>Valor total de desconto: R$' + DescDependentes + '<br>Imposto a ser restituído: R$' + Math.abs(calculoImp);
+                }
+               
+            break;
+        }
+
+        
+        document.getElementById('Imposto').innerHTML += '<br><hr>'+Retorno;
+    }
+    </script>
+</body>
+</html>
+

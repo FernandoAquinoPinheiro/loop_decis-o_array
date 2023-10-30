@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Alunos</title>
+</head>
+<body>
+    <h1>Avaliação de Alunos</h1>
+    <div id="resultados"></div>
+
+    <script>
+        let totalAlunos = 70;
+        let aprovados = 0;
+        let reprovadosFalta = 0;
+        let reprovadosNota = 0;
+        let somaMedias = 0;
+        let maiorMedia = -1;
+        let menorMedia = 11;
+
+        for (let i = 1; i <= totalAlunos; i++) {
+            let matricula = prompt('Informe a matrícula do aluno ' + i + ':');
+            let nota1 = parseFloat(prompt('Informe a nota 1 do aluno ' + i + ':'));
+            let nota2 = parseFloat(prompt('Informe a nota 2 do aluno ' + i + ':'));
+            let nota3 = parseFloat(prompt('Informe a nota 3 do aluno ' + i + ':'));
+            let aulasFrequentadas = parseInt(prompt('Informe o número de aulas frequentadas pelo aluno ' + i + ':'));
+            
+            let media = (nota1 + nota2 + nota3) / 3;
+
+            somaMedias += media;
+
+            if (media >= 7.0 && (aulasFrequentadas / 32) >= 0.8) {
+                resultado = 'Aprovado';
+                aprovados++;
+            } else {
+                if (media < 7.0 && (aulasFrequentadas / 32) < 0.8) {
+                    resultado = 'Reprovado por nota e falta';
+                    reprovadosNota++;
+                    reprovadosFalta++;
+                } else if (media < 7.0) {
+                    resultado = 'Reprovado por nota';
+                    reprovadosNota++;
+                } else {
+                    resultado = 'Reprovado por falta';
+                    reprovadosFalta++;
+                }
+            }
+
+            if (media > maiorMedia) {
+                maiorMedia = media;
+            }
+
+            if (media < menorMedia) {
+                menorMedia = media;
+            }
+
+            document.getElementById('resultados').innerHTML += 'Matrícula: ' + matricula + ' - Média: ' + media + ' - Resultado: ' + resultado + '<br>';
+        }
+
+        let mediaTurma = somaMedias / totalAlunos;
+
+        document.getElementById('resultados').innerHTML += '<br>';
+        document.getElementById('resultados').innerHTML += 'Média da turma: ' + mediaTurma + '<br>';
+        document.getElementById('resultados').innerHTML += 'Maior média: ' + maiorMedia + '<br>';
+        document.getElementById('resultados').innerHTML += 'Menor média: ' + menorMedia + '<br>';
+        document.getElementById('resultados').innerHTML += 'Total de alunos aprovados: ' + aprovados + '<br>';
+        document.getElementById('resultados').innerHTML += 'Total de alunos reprovados por falta: ' + reprovadosFalta + '<br>';
+        document.getElementById('resultados').innerHTML += 'Total de alunos reprovados por nota: ' + reprovadosNota + '<br>';
+    </script>
+</body>
+</html>

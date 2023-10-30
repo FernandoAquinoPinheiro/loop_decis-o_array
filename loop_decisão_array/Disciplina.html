@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // Definir um array para armazenar as disciplinas
+let disciplinas = [];
+
+// Loop para cadastrar disciplinas
+while (true) {
+  // Pedir ao usuário para fornecer os dados da disciplina
+  let nome = prompt("Digite o nome da disciplina:");
+  let descricao = prompt("Digite a descrição do conteúdo:");
+  let frequenciaMinima = parseFloat(prompt("Digite a frequência mínima necessária:"));
+  let notaMinima = parseFloat(prompt("Digite a nota mínima para aprovação:"));
+
+  // Criar um objeto para representar a disciplina
+  let disciplina = {
+    nome: nome,
+    descricao: descricao,
+    frequenciaMinima: frequenciaMinima,
+    notaMinima: notaMinima
+  };
+
+  // Adicionar a disciplina ao array
+  disciplinas.push(disciplina);
+
+  // Perguntar ao usuário se deseja cadastrar mais disciplinas
+  let continuar = prompt("Deseja cadastrar mais disciplinas? (Digite 's' para continuar ou qualquer outra tecla para sair)");
+  if (continuar !== 's' && continuar !== 'S') {
+    break;
+  }
+}
+
+// Imprimir os dados das disciplinas cadastradas
+document.write("<h2>Disciplinas cadastradas:</h2>");
+for (let i = 0; i < disciplinas.length; i++) {
+  let disciplina = disciplinas[i];
+  document.write("<h3>Disciplina: " + disciplina.nome + "</h3>");
+  document.write("<p>Descrição: " + disciplina.descricao + "</p>");
+  document.write("<p>Frequência Mínima: " + disciplina.frequenciaMinima + "</p>");
+  document.write("<p>Nota Mínima para Aprovação: " + disciplina.notaMinima + "</p>");
+  document.write("<hr>");
+}
+
+</script>
+</body>
+</html>

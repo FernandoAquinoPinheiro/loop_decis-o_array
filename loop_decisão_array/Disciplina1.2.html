@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Cadastro </h1>
+    <div id="Cadastro"></div>
+    <script>
+
+        let pergunta = Number(prompt('Você deseja Cadastrar as Disciplinas\nPara Sim, digite [1]\nPara Não, digite [2]'))
+
+       while (pergunta ==1)
+       {
+        let Disciplina = prompt('Digite o nome da disciplina: ');
+        let Descricao = prompt('Digite a Descrição da Disciplina: ');
+        let Frequencia = Number(prompt('Digite a frequencia Minina:'));
+        let notaMinima = Number(prompt('Digite a nota minima para ser aprovado: '));
+
+        pergunta = Number(prompt('Você deseja Cadastrar Outra Disciplinas\n Se Sim digite [1]\n se não Digite [2]'));
+                
+        document.getElementById('Cadastro').innerHTML += '<br>'+'<hr>'+ 'Disciplina: '+Disciplina+'<br>Descrição: '+Descricao+
+        '<br> Frequencia Minima: '+Frequencia+'<br>Nota minima para ser Aprovado'+notaMinima;
+
+       }
+        
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualidade</title>
+</head>
+<body>
+    <h1>Setor de Qualidade</h1>
+    <div id="Qualidade1"></div>
+    <div id="Qualidade2"></div>
+
+    <script>
+        let contAprovado = 0;
+        let contReprovado = 0;
+        let PecaCadastradas = 0;
+        let qntPecas = 5;
+        let situacao;
+
+        while (PecaCadastradas < 400) {
+            let codpeca = prompt('Setor de Qualidade:\nForam cadastradas: ' + PecaCadastradas + ' peças, Faltam: ' + qntPecas + ' Para Cadastrar\nDigite o código da peça');
+            let Condicao = Number(prompt('Digite o Estado da Peça\nPara Aprovado digite [1]:\nPara Reprovado Digite [2]:'));
+            do {
+                if (Condicao !== 1 && Condicao !== 2) {
+                    alert('Opção inválida');
+                    Condicao = Number(prompt('Digite o Estado da Peça\nPara Aprovado digite [1]:\nPara Reprovado Digite [2]:'));
+                }
+            } while (Condicao !== 1 && Condicao !== 2);
+
+            if (Condicao === 1) {
+                contAprovado++;
+                PecaCadastradas++;
+                qntPecas--;
+                situacao = 'Aprovado';
+            } else if (Condicao === 2) {
+                contReprovado++;
+                PecaCadastradas++;
+                qntPecas--;
+                situacao = 'Reprovado';
+            }
+            document.getElementById('Qualidade1').innerHTML = 'Total de Peças: ' + PecaCadastradas + "<br>Total de Peças Aprovadas: " + contAprovado + "<br>Total de Peças Reprovadas: " + contReprovado;
+            document.getElementById('Qualidade2').innerHTML += '<br><hr> Codigo da peça: ' + codpeca + '<br>Situação da peça: ' + situacao;
+        }
+    </script>
+</body>
+</html>
